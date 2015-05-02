@@ -29,6 +29,8 @@ class GeocodingController < ApplicationController
 
     @longitude = parsed_data["results"][0]["geometry"]["location"]["lng"]
 
+
+
     render("street_to_coords.html.erb")
   end
 end
