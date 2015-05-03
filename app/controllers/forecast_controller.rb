@@ -20,8 +20,6 @@ class ForecastController < ApplicationController
 
     parsed_data = JSON.parse(open(url).read)
 
-    #@latitude = parsed_data["results"][0]["geometry"]["location"]["lat"]
-
     @current_temperature = parsed_data["currently"]["temperature"]
 
     @current_summary = parsed_data["currently"]["summary"]
