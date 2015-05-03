@@ -7,8 +7,9 @@ class GeocodingController < ApplicationController
   end
 
   def street_to_coords
+    #raise params.inspect
     @street_address = params[:user_street_address]
-    url_safe_street_address = URI.encode(@street_address)
+    @url_safe_street_address = URI.encode(@street_address)
 
     # ==========================================================================
     # Your code goes below.
@@ -18,10 +19,12 @@ class GeocodingController < ApplicationController
     # ==========================================================================
 
 
+    url = "http://maps.googleapis.com/maps/api/geocode/json?address=#{@url_safe_street_address}"
+    #raise url.inspect
 
-    @latitude = "Replace this string with your answer."
-
-    @longitude = "Replace this string with your answer."
+    parsed_data = JSON.parse(open(url).read)
+    @latitude = parsed_data["results"][0]["geometry"]["location"]["lat"]
+    @longitude = parsed_data["results"][0]["geometry"]["location"]["lng"]
 
     render("street_to_coords.html.erb")
   end
