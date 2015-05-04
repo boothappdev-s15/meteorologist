@@ -5,18 +5,63 @@
   <%= stylesheet_link_tag    'application', media: 'all' %>
   <%= javascript_include_tag 'application' %>
   <%= csrf_meta_tags %>
+
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+
 </head>
+
+
 <body>
 
-<nav>
-  <ul>
-    <li><a href="/street_to_coords/new">Street &rarr; Coords</a></li>
-    <li><a href="/coords_to_weather/new">Coords &rarr; Weather</a></li>
-    <li><a href="/street_to_weather/new">Street &rarr; Weather</a></li>
-  </ul>
-</nav>
+<div id="main-jumbotron" class="jumbotron">
+    <div class="container text-center">
+      <h1>Weather Your Way</h1>
+      <p>by address or coordinates</p>
+    </div>
+  </div>
 
-<%= yield %>
 
+
+
+    <nav class="navbar navbar-inverse">
+      <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="row">
+
+          <div class="col-md-2">
+          </div>
+
+          <div class="col-md-3">
+
+            <a class="navbar-brand" href="/street_to_coords/new">Street <small>to</small> Coords</a>
+
+          </div>
+
+
+
+          <div class="col-md-3">
+
+            <a class="navbar-brand" href="/coords_to_weather/new">Coords <small>to</small> Weather</a>
+
+          </div>
+
+
+          <div class="col-md-4">
+
+            <a class="navbar-brand" href="/street_to_weather/new">Street <small>to</small> Weather</a>
+
+          </div>
+
+        </div>
+      </div><!-- /.container-fluid -->
+    </nav>
+
+
+
+  <div class="container">
+
+
+    <%= yield %>
+  </div>
 </body>
 </html>
