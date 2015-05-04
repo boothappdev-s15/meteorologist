@@ -30,11 +30,24 @@ class MeteorologistController < ApplicationController
 
     parsed_data_weather = JSON.parse(open(url_weather).read)
 
+
     @current_temperature = parsed_data_weather["currently"]["temperature"]
 
     @current_summary = parsed_data_weather["currently"]["summary"]
 
     @summary_of_next_sixty_minutes = parsed_data_weather["minutely"]["summary"]
+
+    # trying to avoid error if location has no minutely data:
+    #
+    # def skip_error(weather_minutes)
+    #     if weather_minutes["minutely"]["summary"] =
+    #         return "Unavailable"
+    #     else
+    #         return weather_minutes["minutely"]["summary"]
+    #     end
+    # end
+
+    # @summary_min_no_error = skip_error(@parsed_data_weather)
 
     @summary_of_next_several_hours = parsed_data_weather["hourly"]["summary"]
 
