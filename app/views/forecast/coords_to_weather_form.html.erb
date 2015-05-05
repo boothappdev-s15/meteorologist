@@ -1,15 +1,26 @@
-<h1>Coords &rarr; Weather Lookup</h1>
+ <div class="panel-heading">
+  <h3 class="panel-title">Coords &rarr; Weather Lookup</h3>
+</div>
+<div class="panel-body">
 
-<form action="/coords_to_weather">
-  <div>
-    <label for="the_latitude">Latitude</label>
-    <input type="text" name="user_latitude" id="the_latitude">
-  </div>
 
-  <div>
-    <label for="the_longitude">Longitude</label>
-    <input type="text" name="user_longitude" id="the_longitude">
-  </div>
+  <form action="/coords_to_weather" class="form-horizontal">
+    <div class="form-group">
+      <label for="the_latitude" class="col-sm-2 control-label">Latitude</label>
+      <div class="col-sm-10">
+        <input type="text" name="user_latitude" class="form-control" id="the_latitude">
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="the_longitude" class="col-sm-2 control-label">Longitude</label>
+      <div class="col-sm-10">
+        <input type="text" name="user_longitude" class="form-control" id="the_longitude">
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="col-sm-offset-2 col-sm-10">
 
-  <button>Lookup Weather</button>
-</form>
+        <button type="submit" class="btn btn-primary btn-block">Lookup Weather</button>
+      </div>
+    </div>
+  </form>
