@@ -1,42 +1,49 @@
 <h1>Coords &rarr; Weather Results</h1>
 
-<dl>
-  <dt>Latitude</dt>
-  <dd><%= @lat %></dd>
 
-  <dt>Longitude</dt>
-  <dd><%= @lng %></dd>
+<div class="row">
+  <div class="col-md-6">
+    <dl>
+      <dt>Latitude</dt>
+      <dd><%= @lat %></dd>
 
-  <dt>Current Temperature</dt>
-  <dd><%= @current_temperature %></dd>
+      <dt>Longitude</dt>
+      <dd><%= @lng %></dd>
 
-  <dt>Current Summary</dt>
-  <dd><%= @current_summary %></dd>
+      <dt>Current Temperature</dt>
+      <dd><%= @current_temperature %></dd>
 
-  <dt>Outlook for next sixty minutes</dt>
-  <dd><%= @summary_of_next_sixty_minutes %></dd>
+      <dt>Current Summary</dt>
+      <dd><%= @current_summary %></dd>
 
-  <dt>Outlook for next several hours</dt>
-  <dd><%= @summary_of_next_several_hours %></dd>
+      <dt>Outlook for next sixty minutes</dt>
+      <dd><%= @summary_of_next_sixty_minutes %></dd>
 
-  <dt>Outlook for next several days</dt>
-  <dd><%= @summary_of_next_several_days %></dd>
+      <dt>Outlook for next several hours</dt>
+      <dd><%= @summary_of_next_several_hours %></dd>
 
-  <dt>Next 14 days:</dt>
-  <dd>Day 1: <%= @day1 %></dd>
-  <dd>Day 2: <%= @day2 %></dd>
-  <dd>Day 3: <%= @day3 %></dd>
-  <dd>Day 4: <%= @day4 %></dd>
-  <dd>Day 5: <%= @day5 %></dd>
-  <dd>Day 6: <%= @day6 %></dd>
-  <dd>Day 7: <%= @day7 %></dd>
-  <dd>Day 8: <%= @day8 %></dd>
-  <dd>Day 9: <%= @day9 %></dd>
-  <dd>Day 10: <%= @day10 %></dd>
-  <dd>Day 11: <%= @day11 %></dd>
-  <dd>Day 12: <%= @day12 %></dd>
-  <dd>Day 13: <%= @day13 %></dd>
-  <dd>Day 14: <%= @day14 %></dd>
+      <dt>Outlook for next several days</dt>
+      <dd><%= @summary_of_next_several_days %></dd>
 
 
-</dl>
+      <dt>Next 14 days:</dt>
+      <dd>Day 1: <%= @day1 %></dd>
+      <dd>Day 2: <%= @day2 %></dd>
+      <dd>Day 3: <%= @day3 %></dd>
+      <dd>Day 4: <%= @day4 %></dd>
+      <dd>Day 5: <%= @day5 %></dd>
+      <dd>Day 6: <%= @day6 %></dd>
+      <dd>Day 7: <%= @day7 %></dd>
+      <dd>Day 8: <%= @day8 %></dd>
+      <dd>Day 9: <%= @day9 %></dd>
+      <dd>Day 10: <%= @day10 %></dd>
+      <dd>Day 11: <%= @day11 %></dd>
+      <dd>Day 12: <%= @day12 %></dd>
+      <dd>Day 13: <%= @day13 %></dd>
+      <dd>Day 14: <%= @day14 %></dd>
+
+    </dl>
+  </div>
+
+  <div id="map-canvas"></div>
+</div>
