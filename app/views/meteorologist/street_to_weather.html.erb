@@ -1,10 +1,55 @@
 <h1>Meteorologist</h1>
 
+
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <meta charset="utf-8">
+    <title>Simple markers</title>
+    <style>
+      html, body, #map-canvas {
+        height: 90%;
+        margin: 50px;
+        padding:10px
+      }
+    </style>
+    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&signed_in=true"></script>
+    <script>
+function initialize() {
+  var myLatlng = new google.maps.LatLng(<%= @latitude %>, <%= @longitude %>);
+  var mapOptions = {
+    zoom: 5,
+    center: myLatlng
+  }
+  var map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
+
+  var marker = new google.maps.Marker({
+      position: myLatlng,
+      map: map,
+      title: 'Hello World!'
+  });
+}
+
+google.maps.event.addDomListener(window, 'load', initialize);
+
+    </script>
+  </head>
+  <body>
+    <div id="map-canvas"></div>
+    </body>
+
+<div class="panel panel-default">
+  <div class="panel-body">
+
 <p>Here's the outlook for <%= @street_address %>:</p>
 
 <dl>
   <dt>Current Temperature</dt>
   <dd><%= @current_temperature %></dd>
+
+  <dt>Expected Max Temperature for Today: </dt>
+  <dd><%= @current_temperature_max %></dd>
+
+  <dt>Expected Min Temperature for Today: </dt>
+  <dd><%= @current_temperature_min %></dd>
 
   <dt>Current Summary</dt>
   <dd><%= @current_summary %></dd>
@@ -17,4 +62,62 @@
 
   <dt>Outlook for next several days</dt>
   <dd><%= @summary_of_next_several_days %></dd>
+
 </dl>
+
+</div>
+</div>
+<h3> Your 7 day Outlook is: </h3>
+<div class="row">
+      <div class="col-md-3">
+        <div class="panel panel-default">
+          <dt> Your Temperature Forecast for <%= @day [0] %> is: </dt>
+          <dd> <%= @summary_day_one[0] %> </dd>
+        </div>
+      </div>
+<div class="col-md-3">
+        <div class="panel panel-default">
+          <dt> Your Temperature Forecast for <%= @day [1] %> is: </dt>
+          <dd> <%= @summary_day_one[1] %> </dd>
+        </div>
+      </div>
+<div class="col-md-3">
+        <div class="panel panel-default">
+          <dt> Your Temperature Forecast for <%= @day [2] %> is: </dt>
+          <dd> <%= @summary_day_one[2] %> </dd>
+        </div>
+      </div>
+<div class="col-md-3">
+        <div class="panel panel-default">
+          <dt> Your Temperature Forecast for <%= @day [3] %> is: </dt>
+          <dd> <%= @summary_day_one[3] %> </dd>
+        </div>
+      </div>
+      </div>
+
+<div class="row">
+      <div class="col-md-3">
+        <div class="panel panel-default">
+          <dt> Your Temperature Forecast for <%= @day [4] %> is: </dt>
+          <dd> <%= @summary_day_one[4] %> </dd>
+        </div>
+      </div>
+<div class="col-md-3">
+        <div class="panel panel-default">
+          <dt> Your Temperature Forecast for <%= @day [5] %> is: </dt>
+          <dd> <%= @summary_day_one[5] %> </dd>
+        </div>
+      </div>
+<div class="col-md-3">
+        <div class="panel panel-default">
+          <dt> Your Temperature Forecast for <%= @day [6] %> is: </dt>
+          <dd> <%= @summary_day_one[6] %> </dd>
+        </div>
+      </div>
+
+      </div>
+
+  <!-- <dt> Max Temperature for : <%= @day [0] %> </dt>
+  <dd> <%= @summary_day_one[0] %> </dd> -->
+ </body>
+</html>
