@@ -35,19 +35,9 @@ class MeteorologistController < ApplicationController
 
     @current_summary = parsed_data_weather["currently"]["summary"]
 
-    @summary_of_next_sixty_minutes = parsed_data_weather["minutely"].present? ? parsed_data_weather["minutely"]["summary"] : "Not available"
+    @summary_of_next_sixty_minutes = parsed_data_weather["minutely"].present? ? parsed_data_weather["minutely"]["summary"] : "Unavailable"
 
-    # trying to avoid error if location has no minutely data:
-    #
-    # def skip_error(weather_minutes)
-    #     if weather_minutes["minutely"]["summary"] == nil
-    #         return "Unavailable"
-    #     else
-    #         return weather_minutes["minutely"]["summary"]
-    #     end
-    # end
-
-    # @summary_min_no_error = skip_error(@parsed_data_weather)
+    #above to avoid errors with locations having no minutely data
 
     @summary_of_next_several_hours = parsed_data_weather["hourly"]["summary"]
 
