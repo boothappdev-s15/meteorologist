@@ -25,7 +25,9 @@ class ForecastController < ApplicationController
 
     @current_summary = parsed_data["currently"]["summary"]
 
-    #@summary_of_next_sixty_minutes = parsed_data["minutely"]["summary"]
+    if parsed_data["minutely"]!=nil
+      @summary_of_next_sixty_minutes = parsed_data["minutely"]["summary"]
+    end
 
     @summary_of_next_several_hours = parsed_data["hourly"]["summary"]
     @summary_of_next_several_days = parsed_data["daily"]["summary"]
