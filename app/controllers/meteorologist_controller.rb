@@ -18,16 +18,37 @@ class MeteorologistController < ApplicationController
     # ==========================================================================
 
 
+    # ryan's comments:
+        # first, use what you did in street_to_coords
+        # then, use those lat and lng values from street_to_coords to pull forecast
 
-    @current_temperature = "Replace this string with your answer."
+        url = "http://maps.googleapis.com/maps/api/geocode/json?address=#{url_safe_street_address}"
 
-    @current_summary = "Replace this string with your answer."
+        json_data = open(url).read
 
-    @summary_of_next_sixty_minutes = "Replace this string with your answer."
+        ruby_data = JSON.parse(json_data)
 
-    @summary_of_next_several_hours = "Replace this string with your answer."
+        results = ruby_data["results"]
 
-    @summary_of_next_several_days = "Replace this string with your answer."
+        @lat = results[0]["geometry"]["location"]["lat"]
+
+        @lng = results[0]["geometry"]["location"]["lng"]
+
+        urls = "https://api.forecast.io/forecast/d65892e0c3c0000eb2a2eea1aad4f7a7/#{@lat},#{@lng}"
+
+        json_data = open(urls).read
+
+        met_data = JSON.parse(json_data)
+
+        @current_temperature = met_data["currently"]["temperature"]
+
+        @current_summary = met_data["currently"]["summary"]
+
+        @summary_of_next_sixty_minutes = met_data["minutely"]["summary"]
+
+        @summary_of_next_several_hours = met_data["hourly"]["summary"]
+
+        @summary_of_next_several_days = met_data["daily"]["summary"]
 
     render("street_to_weather.html.erb")
   end
