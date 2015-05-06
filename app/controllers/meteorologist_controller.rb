@@ -25,7 +25,7 @@ class MeteorologistController < ApplicationController
     url_safe_lat = URI.encode(@latitude)
     url_safe_lng = URI.encode(@longitude)
 
-    url = "https://api.forecast.io/forecast/ece023cb1d0d1c0ae59753eb0b8e94ee/" + url_safe_lat , url_safe_lng
+    url = "https://api.forecast.io/forecast/510d023df9e77de93074f6c3a6ce4f89/#{url_safe_lat},#{url_safe_lng}"
 
     parsed_data = JSON.parse(open(url).read)
 
