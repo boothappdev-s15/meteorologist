@@ -35,7 +35,7 @@ class MeteorologistController < ApplicationController
 
     @current_summary = parsed_data_weather["currently"]["summary"]
 
-    @summary_of_next_sixty_minutes = parsed_data_weather["minutely"]["summary"]
+    @summary_of_next_sixty_minutes = parsed_data_weather["minutely"].present? ? parsed_data_weather["minutely"]["summary"] : "Not available"
 
     # trying to avoid error if location has no minutely data:
     #
