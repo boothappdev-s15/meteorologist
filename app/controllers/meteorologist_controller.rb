@@ -17,11 +17,6 @@ class MeteorologistController < ApplicationController
     #   characters removed, is in the string url_safe_street_address.
     # ==========================================================================
 
-
-    # ryan's comments:
-        # first, use what you did in street_to_coords
-        # then, use those lat and lng values from street_to_coords to pull forecast
-
         url = "http://maps.googleapis.com/maps/api/geocode/json?address=#{url_safe_street_address}"
 
         json_data = open(url).read
