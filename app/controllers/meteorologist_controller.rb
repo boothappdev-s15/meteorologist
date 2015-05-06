@@ -52,37 +52,37 @@ class MeteorologistController < ApplicationController
 
 
     def future_forecast(now) #creates array of required dates
-        day = 86400
-        times = []
-        1.upto(14) do |i|
-            timenext = now + i*day
-            times.push timenext
-        end
+      day = 86400
+      times = []
+      1.upto(14) do |i|
+        timenext = now + i*day
+        times.push timenext
+      end
 
-        return times
+      return times
     end
 
 
-       @dates = future_forecast(@nowtime)
+    @dates = future_forecast(@nowtime)
 
        def summaries(lat,lng,dates) #retrieves summaries for each of 14 dates
 
         summary_content = []
         dates.each do |date_number|
 
-           url_weather_future = "https://api.forecast.io/forecast/9e12e5c5430628a4162d838a846225c8/#{lat},#{lng},#{date_number}"
+         url_weather_future = "https://api.forecast.io/forecast/9e12e5c5430628a4162d838a846225c8/#{lat},#{lng},#{date_number}"
 
-           parsed_data_weather_future = JSON.parse(open(url_weather_future).read)
+         parsed_data_weather_future = JSON.parse(open(url_weather_future).read)
 
-           day_summary = parsed_data_weather_future["daily"]["data"][0]["summary"]
+         day_summary = parsed_data_weather_future["daily"]["data"][0]["summary"]
 
-           summary_content.push day_summary
+         summary_content.push day_summary
 
        end
 
        return summary_content
 
-        end
+     end
 
 
     @allsums = summaries(@lat,@lng,@dates)
