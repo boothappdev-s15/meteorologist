@@ -16,17 +16,18 @@ class ForecastController < ApplicationController
     # The longitude the user input is in the string @lng.
     # ==========================================================================
 
+    forecast_url = "https://api.forecast.io/forecast/64998bd1d4cacd94578213eae14f43de/#{@lat.to_f},#{@lng.to_f}"
+      forecast_parsed_data = JSON.parse(open(forecast_url).read)
 
+    @current_temperature = forecast_parsed_data["currently"]["temperature"]
 
-    @current_temperature = "Replace this string with your answer."
+    @current_summary = forecast_parsed_data["currently"]["summary"]
 
-    @current_summary = "Replace this string with your answer."
+    @summary_of_next_sixty_minutes = forecast_parsed_data["minutely"]["summary"]
 
-    @summary_of_next_sixty_minutes = "Replace this string with your answer."
+    @summary_of_next_several_hours = forecast_parsed_data["hourly"]["summary"]
 
-    @summary_of_next_several_hours = "Replace this string with your answer."
-
-    @summary_of_next_several_days = "Replace this string with your answer."
+    @summary_of_next_several_days = forecast_parsed_data["daily"]["summary"]
 
     render("coords_to_weather.html.erb")
   end
